@@ -5,7 +5,10 @@
 + En 1997 le super ordinateur d'IBM, Deep Blue, battait le champion du monde d'échec Gary Kasparov pour la première fois (quatre parties à deux). Deep Blue utilisait un algorithme relativement classique, l'algorithme Minimax couplé avec une énorme base de données de 60 000 parties. --epi.asso.fr--
 + En 2017, AlphaZero a choqué le monde des échecs en écrasant Stockfish dans un match de 100 parties. Depuis, les moteurs d'échecs ont subi une révision substantielle basée sur des méthodes d'apprentissage profond pour développer un réseau neuronal -- chessbase.com --
 + La plus impressionnante avancée d'AlphaZero est qu'à la différence des générations précédentes de logiciels de jeux, il n'a pas été programmé ou entraîné à partir de données venant de parties jouées par des humains. L'algorithme s'est entraîné tout seul à partir des règles du jeu, en jouant des centaines de milliers de coups contre lui-même --developpez.com--
-+ 
++ Actuellement, trois sites Web d'échecs se démarquent clairement chess24, chess.com et lichess.
+Parmi les plateformes d'échecs en ligne. Tous vous offrent l'accès à un ensemble puissant d'outils de jeu et d'apprentissage et un service complet. -- ichess.net--. Elles permettent à la fois de faire des parties contre des joueurs mais aussi de s'entrainer. Pour les entrainements, plusieurs algorithmes existent afin de guider les joueurs dans les parties pédagogiques, tous se basent sur une grande base de partie afin de présenter les meilleurs coups aux joueurs. 
+Voici quelques exemples : 5 PHOTO + COM 
+
 
  
 Intro : 
