@@ -12,3 +12,5 @@ Le "niveau" de l'algo est modifiable avec le paramètre 'depth'. Actuellement, 4
 Le temps de calcul de l'algo n'est pas encore adapté à la complexité de la position. Il joue très vite dans des positions simples, mais peut prendre quelques secondes sur des positions complexes, notamment avec depth >= 4 
 
 La promotion se fait automatiquement en dame pour l'instant.
+
+Les valeurs de position de la fonction de recherche du clic sont actuellement codées en dur : éviter de modifier les paramètres de taille de l'échiquier.
