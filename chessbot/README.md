@@ -1,4 +1,4 @@
-# Utlisation du script chessbot_avec_clic :
+# Utilisation du script chessbot_avec_clic :
 
 Le joueur humain joue les blancs, l'algo joue les noirs.
 
@@ -14,3 +14,5 @@ Le temps de calcul de l'algo n'est pas encore adapté à la complexité de la po
 La promotion se fait automatiquement en dame pour l'instant.
 
 Les valeurs de position de la fonction de recherche du clic sont actuellement codées en dur : éviter de modifier les paramètres de taille de l'échiquier.
+
+
