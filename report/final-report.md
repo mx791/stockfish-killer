@@ -2,7 +2,7 @@
 
 + faire un état de l'art 
 + En terme d'évaluation des parties d'échec, il existe plusieurs supers ordinateurs très connus (deep blue, stock fish) utilisant plusieurs méthodes d'apprentissage.
-+ En 1997 le super ordinateur d'IBM, Deep Blue, battait le champion du monde d'échec Gary Kasparov pour la première fois (quatre parties à deux). Deep Blue utilisait un algorithme relativement classique, l'algorithme Minimax couplé avec une énorme base de données de 60 000 parties. --epi.asso.fr--
++ En 1999 le super ordinateur d'IBM, Deep Blue, battait le champion du monde d'échec Gary Kasparov pour la première fois (quatre parties à deux). Deep Blue utilisait un algorithme relativement classique, l'algorithme Minimax couplé avec une énorme base de données de 60 000 parties. --epi.asso.fr--
 + En 2017, AlphaZero a choqué le monde des échecs en écrasant Stockfish dans un match de 100 parties. Depuis, les moteurs d'échecs ont subi une révision substantielle basée sur des méthodes d'apprentissage profond pour développer un réseau neuronal -- chessbase.com --
 + La plus impressionnante avancée d'AlphaZero est qu'à la différence des générations précédentes de logiciels de jeux, il n'a pas été programmé ou entraîné à partir de données venant de parties jouées par des humains. L'algorithme s'est entraîné tout seul à partir des règles du jeu, en jouant des centaines de milliers de coups contre lui-même --developpez.com--
 + Actuellement, trois sites Web d'échecs se démarquent clairement chess24, chess.com et lichess.
@@ -31,7 +31,11 @@ Puis proposer une strétégie :
 - Ex: Contre ce joueur A, qui joue une Queen Gambit (65% de ses parties avec les blancs), Faire une défence Caro-Khan (47% de victoire contre lui et 46% de victoire contre des joueur avec un profil similaire, en attaquant l'aile roi en sortie d'ouverture). 
 
 
+
 1 Explications de la base de donnée : 
+
+Nous avons récupéré des bases de données de parties d'échecs jouées sur le site "Lichess". Chaque fichier correspond à un mois (ex. Juin 2020), a une taille ~100 MB, et contient environ 400K parties. Il est au format PGN, le format de référence pour transcrire numériquement des parties d'échecs. Nous utilisons la librairie python-chess pour parser les parties et en extraire les informations nécessaires à nos objectifs.
+
 [Event "Rated Blitz game"]   --> Type d'événement dans lequel c'est jouer la partie, ici 'rated Blitz game : partie de Blitz classée(d'une durée de 3 à 5 minutes par joueur)
 #dans les bases de données le temps n'est pas précisé, mais il est possible en allant sur le lien ci dessous d'avoir la partie complète#
 [LichessURL "https://lichess.org/kuUOsOML"] --> Lien vers la partie complète sur le site Lichess
@@ -43,7 +47,7 @@ Puis proposer une strétégie :
 [WhiteElo "2413"] --> Précision de l'ELO du joueur blanc 
 [BlackElo "2254"]--> Précision de l'ELO du joueur noir 
 [ECO "C18"] --> Référence de l'ouverture
-[Opening "French Defense: Winawer Variation, Poisoned Pawn Variation"] --> Type d'ouverture jouer par les blanc 
+[Opening "French Defense: Winawer Variation, Poisoned Pawn Variation"] --> Type d'ouverture jouée par les blancs
 [TimeControl "180+2"] --> Temps de la partie 180s par joueur (soit 3 minutes) et +2 (secondes) indique le temps gagner à chaque coup jouer.
 [UTCDate "2020.06.01"] --> Date UTC 
 [UTCTime "00:00:00"] -->  Heure à laquelle c'est jouer la partie
@@ -102,7 +106,7 @@ Visualisation of the data shows its key characteristics --> plusieurs graphs à 
 2 - Technical choices
 
 
-The task is well-identified (classification, anomaly detection...) --> 1 traitement de la base de donné et étude des anomalies, 2 indentification des joueurs et de leur style 3 faire un rapprochement avec les joueurs de même style, 4 entrainement d'un bot 5 conseils contre un joueur pour une partie 
+The task is well-identified (classification, anomaly detection...) --> 1 traitement de la base de donné et étude des anomalies, 2 indentification des joueurs et de leur style 3 faire un rapprochement avec les joueurs de même style, 4 machine learning sur les positions -> utilisation des résultats pour améliorer la qualité du bot (à base de minimax/élagage alpha-bêta + fonction d'évaluation de position naïve), 5 conseils contre un joueur pour une partie 
 
 The chosen algorithms are suited to the task  --> Présentation des algos + code review 
 
@@ -161,6 +165,6 @@ The code is available and easy to run / well documented --> OK
 
 The dataset was not pre-existing --> Pas ok, notre dataset existe déjà, mais on le complète. 
 
-Algorithm(s) were reimplemented from scratch --> Plus ou moins 
+Algorithm(s) were reimplemented from scratch --> Plus ou moins. Pour le chessbot, l'algo minimax avec élagage alpha-bêta codé à la main. Pour le clustering sur les joueurs, utilisation de l'algorithme de Louvain de la libraire NetworkX.
 
 ...and are more efficient than ”official” librairies --> Pas OK 
