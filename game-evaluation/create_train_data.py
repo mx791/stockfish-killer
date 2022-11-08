@@ -18,13 +18,14 @@ def get_vect(board):
                 vect[position*len(pieces)*2 + i*len(pieces) + e] = 1
     return vect
 
-X, Y = [], []
-Y_ = []
 
 out_dir = "F:\\Dataset\\chess\\"
 
-def load_n_game_from(pgn, n):
+def load_n_game_from(pgn, n, name):
     count = 0
+
+    X, Y = [], []
+    Y_ = []
 
     for i in range(n):
         game = chess.pgn.read_game(pgn)
@@ -44,7 +45,7 @@ def load_n_game_from(pgn, n):
         for move in game.mainline_moves():
             board.push(move)
             count += 1
-            if count%7 == 0:
+            if count % 7 == 0:
                 vect = get_vect(board)
                 X.append(vect)
                 Y.append(y_)
@@ -54,32 +55,18 @@ def load_n_game_from(pgn, n):
             print(i, len(X))
 
 
-    np.save(open(out_dir + "X.npy", "wb"), np.array(X))
-    np.save(open(out_dir + "Y.npy", "wb"), np.array(Y_))
+    np.save(open(out_dir + "X_" + str(name), "wb"), np.array(X))
+    np.save(open(out_dir + "Y_" + str(name), "wb"), np.array(Y_))
 
 
 pgn = open("../../data/lichess_elite_2020-06.pgn")
-load_n_game_from(pgn, 10000)
+load_n_game_from(pgn, 300000, 1)
 
 pgn = open("../../data/lichess_elite_2020-08.pgn")
-load_n_game_from(pgn, 100000)
+load_n_game_from(pgn, 300000, 2)
 
 pgn = open("../../data/lichess_elite_2020-12.pgn")
-load_n_game_from(pgn, 100000)
+load_n_game_from(pgn, 300000, 3)
 
 pgn = open("../../data/lichess_elite_2021-06.pgn")
-load_n_game_from(pgn, 100000)
-
-
-print(len(X))
-
-X = np.array(X)
-Y = np.array(Y)
-Y1 = np.array(Y_)
-
-print(X.shape)
-print(Y.shape)
-
-
-np.save(open(out_dir + "X.npy", "wb"), X)
-np.save(open(out_dir + "Y.npy", "wb"), Y1)
+load_n_game_from(pgn, 300000, 4)
